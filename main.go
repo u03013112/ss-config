@@ -27,6 +27,7 @@ func main() {
 	if err != nil {
 		log.Fatalf("failed to listen: %v", err)
 	}
+	log.Println("listen 50001")
 	s := grpc.NewServer()
 	pb.RegisterSSConfigServer(s, &server{})
 	if err := s.Serve(lis); err != nil {
