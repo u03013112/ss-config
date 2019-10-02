@@ -12,7 +12,7 @@ import (
 )
 
 const (
-	mysqlPasswd = "!@#ddpaas@intWall"
+	mysqlPasswd = "!@#sspaas@U0"
 	mysqlDBName = "ss_main"
 )
 
