@@ -20,7 +20,7 @@ func ScheduleInit() {
 }
 
 func checkConfig() {
-	configList := getConfigList()
+	configList := getConfigListAll()
 	if len(configList) > 0 {
 		ipList := make([]string, 0) //所有需要ping的IP
 		for _, c := range configList {

@@ -27,6 +27,13 @@ func getConfigList() []*Config {
 	return configList
 }
 
+func getConfigListAll() []*Config {
+	var configList []*Config
+	db := sql.GetInstance().Model(&Config{})
+	db.Find(&configList)
+	return configList
+}
+
 func updateConfig(c *Config) {
 	sql.GetInstance().Model(c).Where("id = ?", c.ID).Update(Config{IP: c.IP, Status: c.Status})
 }
