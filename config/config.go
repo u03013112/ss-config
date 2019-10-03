@@ -18,6 +18,11 @@ func (s *Srv) Test(ctx context.Context, in *pb.TestRequest) (*pb.TestReply, erro
 
 // GetSSConfig : 获取ss配置
 func (s *Srv) GetSSConfig(ctx context.Context, in *pb.GetSSConfigRequest) (*pb.GetSSConfigReply, error) {
+	role, err := grpcGetRole(in.Token)
+	if err != nil {
+		return nil, err
+	}
+	print(role) //现在role暂时没啥用
 	configList := getConfigList()
 	return chooseSSConfig(configList), nil
 }

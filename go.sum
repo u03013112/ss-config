@@ -86,6 +86,8 @@ github.com/u03013112/ss-pb v1.0.7 h1:QgX/f4XVI3cPSH1CPxd/XfzFVADsVKd1xXY6v1QtczQ
 github.com/u03013112/ss-pb v1.0.7/go.mod h1:8ReIldw0GwQYZe914ll4kOz4cjz8HCUqUMjlRheRXrA=
 github.com/u03013112/ss-pb v1.0.8 h1:MHqUJgjmvGDSsSs09lqr47GyBRjNFccLn8ZCR8bukX0=
 github.com/u03013112/ss-pb v1.0.8/go.mod h1:8ReIldw0GwQYZe914ll4kOz4cjz8HCUqUMjlRheRXrA=
+github.com/u03013112/ss-pb v1.0.9 h1:7Yb9D8y3Iw2qwDbT0h3+wxcB33+yFU96XoNEWnME2TY=
+github.com/u03013112/ss-pb v1.0.9/go.mod h1:8ReIldw0GwQYZe914ll4kOz4cjz8HCUqUMjlRheRXrA=
 go.opencensus.io v0.20.1/go.mod h1:6WKK9ahsWS3RSO+PY9ZHZUfv2irvY6gN279GOPZjmmk=
 golang.org/x/crypto v0.0.0-20180904163835-0709b304e793/go.mod h1:6SG95UA2DQfeDnfUPMdvaQW0Q7yPrPDi9nlGo2tz2b4=
 golang.org/x/crypto v0.0.0-20190308221718-c2843e01d9a2/go.mod h1:djNgcEr1/C05ACkg1iLfiJU5Ep61QUkGW8qpdssI0+w=
