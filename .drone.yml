@@ -21,7 +21,8 @@ steps:
 - name: build
   image: golang:1.12
   commands:  # build
-  - go build main.go
+  - mkdir build 
+  - go build main.go -o build/ss-config
   environment:
     GO111MODULE: on
   when:
@@ -50,5 +51,5 @@ steps:
     event:
       - push
 
-      
+
 ...
