@@ -40,7 +40,7 @@ steps:
       from_secret: DOCKER_USER
     password:
       from_secret: DOCKER_PASSWORD
-    repo: v2af/aliddns
+    repo: u03013112/ss-config
     tags:
       - latest
     dockerfile: Dockerfile
