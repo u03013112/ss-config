@@ -22,7 +22,7 @@ steps:
   image: golang:1.12
   commands:  # build
   - mkdir build 
-  - go build main.go -o build/ss-config
+  - go build -o build/ss-config main.go
   environment:
     GO111MODULE: on
   when:
