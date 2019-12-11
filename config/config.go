@@ -48,9 +48,15 @@ func (s *Srv) GetSSLineList(ctx context.Context, in *pb.GetSSLineListRequest) (*
 	ret := &pb.GetSSLineListReply{
 		Error: "",
 	}
-	_, err := grpcGetRole(in.Token)
+	uInfo, err := grpcGetUserInfo(in.Token)
 	if err != nil {
 		return nil, err
+	}
+	if uInfo.Type == "android" {
+		if uInfo.Status != "normal" {
+			ret.Error = uInfo.Status
+			return ret, nil
+		}
 	}
 	configList := getConfigList()
 	j, _ := json.Marshal(configList)
@@ -63,9 +69,15 @@ func (s *Srv) GetSSLineConfig(ctx context.Context, in *pb.GetSSLineConfigRequest
 	ret := &pb.GetSSLineConfigReply{
 		Error: "",
 	}
-	_, err := grpcGetRole(in.Token)
+	uInfo, err := grpcGetUserInfo(in.Token)
 	if err != nil {
 		return nil, err
+	}
+	if uInfo.Type == "android" {
+		if uInfo.Status != "normal" {
+			ret.Error = uInfo.Status
+			return ret, nil
+		}
 	}
 	configList := getConfigList()
 	index := in.LineID
