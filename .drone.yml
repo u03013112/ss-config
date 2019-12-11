@@ -50,7 +50,5 @@ steps:
     event:
       - push
 
-kind: signature
-hmac: 9b6b0dfc4f74bf860ad14730dd5aad44992be7db35c29ccae77e51aa0957dd2e
-
+      
 ...
