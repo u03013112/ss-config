@@ -2,6 +2,7 @@ package config
 
 import (
 	"context"
+	"encoding/json"
 	"log"
 
 	pb "github.com/u03013112/ss-pb/config"
@@ -40,4 +41,39 @@ func chooseSSConfig(configList []*Config) *pb.GetSSConfigReply {
 		return ret
 	}
 	return nil
+}
+
+// GetSSLineList :
+func (s *Srv) GetSSLineList(ctx context.Context, in *pb.GetSSLineListRequest) (*pb.GetSSLineListReply, error) {
+	ret := &pb.GetSSLineListReply{
+		Error: "",
+	}
+	_, err := grpcGetRole(in.Token)
+	if err != nil {
+		return nil, err
+	}
+	configList := getConfigList()
+	j, _ := json.Marshal(configList)
+	json.Unmarshal(j, &ret.List)
+	return ret, nil
+}
+
+// GetSSLineConfig :
+func (s *Srv) GetSSLineConfig(ctx context.Context, in *pb.GetSSLineConfigRequest) (*pb.GetSSLineConfigReply, error) {
+	ret := &pb.GetSSLineConfigReply{
+		Error: "",
+	}
+	_, err := grpcGetRole(in.Token)
+	if err != nil {
+		return nil, err
+	}
+	configList := getConfigList()
+	index := in.LineID
+	if index < 0 || int(index) > len(configList) {
+		ret.Error = "线路不可用"
+		return ret, nil
+	}
+	j, _ := json.Marshal(configList[index])
+	json.Unmarshal(j, ret)
+	return ret, nil
 }

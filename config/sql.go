@@ -7,12 +7,15 @@ import (
 // Config : 数据库存储格式
 type Config struct {
 	sql.BaseModel
-	Domain string `json:"domain,omitempty"`
-	IP     string `json:"ip,omitempty"`
-	Port   string `json:"port,omitempty"`
-	Method string `json:"method,omitempty"`
-	Passwd string `json:"passwd,omitempty"`
-	Status int64  `json:"status,omitempty"` //0代表不通，1代表通，负数代表各种错误，比如dns错误等。
+	Name        string `json:"name,omitempty"`
+	Address     string `json:"address,omitempty"`
+	Description string `json:"description,omitempty"`
+	Domain      string `json:"domain,omitempty"`
+	IP          string `json:"ip,omitempty"`
+	Port        string `json:"port,omitempty"`
+	Method      string `json:"method,omitempty"`
+	Passwd      string `json:"passwd,omitempty"`
+	Status      int64  `json:"status,omitempty"` //0代表不通，1代表通，负数代表各种错误，比如dns错误等。
 }
 
 // InitDB : 初始化表格，建议在整个数据库初始化之后调用

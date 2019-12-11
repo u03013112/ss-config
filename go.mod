@@ -3,9 +3,10 @@ module github.com/u03013112/ss-config
 go 1.12
 
 require (
-	github.com/grpc-ecosystem/grpc-gateway v1.11.2 // indirect
 	github.com/jinzhu/gorm v1.9.11
-	github.com/u03013112/ss-pb v1.0.9
-	golang.org/x/net v0.0.0-20190926025831-c00fd9afed17
-	google.golang.org/grpc v1.24.0
+	github.com/kr/pretty v0.1.0 // indirect
+	github.com/u03013112/ss-pb v1.0.21
+	golang.org/x/net v0.0.0-20191126235420-ef20fe5d7933
+	google.golang.org/grpc v1.25.1
+	gopkg.in/resty.v1 v1.12.0 // indirect
 )
