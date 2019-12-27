@@ -13,7 +13,7 @@ const (
 	port = ":50001"
 )
 
-//for ci
+// for ci
 func main() {
 	config.InitDB()
 	config.ScheduleInit()
