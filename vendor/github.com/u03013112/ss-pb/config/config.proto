@@ -1,0 +1,81 @@
+syntax = "proto3";
+package config;
+option go_package = "github.com/u03013112/ss-pb/config";
+
+import "google/api/annotations.proto";
+
+service SSConfig {
+    rpc Test (TestRequest) returns (TestReply) {
+        option (google.api.http) = {
+            post: "/v1/config/test"
+            body: "*"
+        };
+    }
+    rpc GetSSConfig(GetSSConfigRequest) returns (GetSSConfigReply) {
+        option (google.api.http) = {
+            post: "/v1/config/get-config"
+            body: "*"
+        };
+    }
+    rpc GetSSLineList(GetSSLineListRequest) returns (GetSSLineListReply) {
+        option (google.api.http) = {
+            post: "/v1/config/get-line-list"
+            body: "*"
+        };
+    }
+    rpc GetSSLineConfig(GetSSLineConfigRequest) returns (GetSSLineConfigReply) {
+        option (google.api.http) = {
+            post: "/v1/config/get-line-config"
+            body: "*"
+        };
+    }
+}
+
+message TestRequest {
+    string name = 1;
+}
+
+message TestReply {
+    string message = 1;
+}
+
+message GetSSConfigRequest{
+    string token = 1;
+}
+
+message GetSSConfigReply {
+    string IP = 1;
+    string port = 2;
+    string method = 3;
+    string passwd = 4;
+}
+
+message GetSSLineListRequest {
+    string token = 1;
+}
+
+message SSLine {
+    int64 id = 1;
+    string name = 2;
+    string address = 3;
+    string description = 4;
+    string status = 5;
+}
+
+message GetSSLineListReply {
+    string error = 1;
+    repeated SSLine list = 2;
+}
+
+message GetSSLineConfigRequest {
+    string token = 1;
+    int64 lineID = 2;
+}
+
+message GetSSLineConfigReply {
+    string error = 1;
+    string IP = 2;
+    string port = 3;
+    string method = 4;
+    string passwd = 5;
+}
