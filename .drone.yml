@@ -3,21 +3,6 @@ kind: pipeline
 name: default
 
 steps:
-- name: download-dependencies
-  image: golang:1.12
-  commands:
-    # wait for services to be ready.
-    - sleep 5
-    - go mod download
-    - go mod vendor # this is for when the Dockerfile gets built
-  environment:
-    GO111MODULE: on
-    GOPROXY: https://goproxy.io
-  volumes:
-  - name: cache
-    path: /go
-
-
 - name: build
   image: golang:1.12
   commands:  # build
