@@ -40,3 +40,8 @@ func getConfigListAll() []*Config {
 func updateConfig(c *Config) {
 	sql.GetInstance().Model(c).Where("id = ?", c.ID).Update(Config{IP: c.IP, Status: c.Status})
 }
+
+func setPasswd(passwd string) {
+	// 更新所有passwd
+	sql.GetInstance().Model(&Config{}).Update("passwd", passwd)
+}

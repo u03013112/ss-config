@@ -29,7 +29,10 @@ service SSConfig {
             body: "*"
         };
     }
+    rpc SetPasswd(SetPasswdRequest) returns (Void) {}
 }
+
+message Void {}
 
 message TestRequest {
     string name = 1;
@@ -78,4 +81,8 @@ message GetSSLineConfigReply {
     string port = 3;
     string method = 4;
     string passwd = 5;
+}
+
+message SetPasswdRequest {
+    string passwd = 1;
 }

@@ -89,3 +89,9 @@ func (s *Srv) GetSSLineConfig(ctx context.Context, in *pb.GetSSLineConfigRequest
 	json.Unmarshal(j, ret)
 	return ret, nil
 }
+
+// SetPasswd :
+func (s *Srv) SetPasswd(ctx context.Context, in *pb.SetPasswdRequest) (*pb.Void, error) {
+	setPasswd(in.Passwd)
+	return &pb.Void{}, nil
+}
