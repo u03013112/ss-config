@@ -44,6 +44,7 @@ message TestReply {
 
 message GetSSConfigRequest{
     string token = 1;
+    int64 lineID = 2;
 }
 
 message GetSSConfigReply {
