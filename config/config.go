@@ -30,17 +30,20 @@ func (s *Srv) GetSSConfig(ctx context.Context, in *pb.GetSSConfigRequest) (*pb.G
 	return chooseSSConfig(configList, in.LineID), nil
 }
 
-// 选择算法，现在就是直接取第一个
 func chooseSSConfig(configList []*Config, lineID int64) *pb.GetSSConfigReply {
 	if len(configList) > 0 {
-		if lineID < 0 || lineID >= int64(len(configList)) {
-			lineID = 0
+		index := 0
+		for i, c := range configList {
+			if int64(c.ID) == lineID {
+				index = i
+			}
 		}
+
 		ret := new(pb.GetSSConfigReply)
-		ret.IP = configList[lineID].IP
-		ret.Port = configList[lineID].Port
-		ret.Method = configList[lineID].Method
-		ret.Passwd = configList[lineID].Passwd
+		ret.IP = configList[index].IP
+		ret.Port = configList[index].Port
+		ret.Method = configList[index].Method
+		ret.Passwd = configList[index].Passwd
 		return ret
 	}
 	return nil
