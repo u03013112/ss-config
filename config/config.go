@@ -26,6 +26,19 @@ func (s *Srv) GetSSConfig(ctx context.Context, in *pb.GetSSConfigRequest) (*pb.G
 		}
 		print(role) //现在role暂时没啥用
 	}
+	if in.LineID >= 10000 {
+		if c, err := grpcGetTestLineConfig(in.LineID - 10000); err == nil {
+			ret := &pb.GetSSConfigReply{
+				IP:     c.IP,
+				Port:   c.Port,
+				Method: c.Method,
+				Passwd: c.Passwd,
+			}
+			return ret, nil
+		} else {
+			return nil, err
+		}
+	}
 	configList := getConfigList()
 	return chooseSSConfig(configList, in.LineID), nil
 }
@@ -65,6 +78,16 @@ func (s *Srv) GetSSLineList(ctx context.Context, in *pb.GetSSLineListRequest) (*
 		}
 	}
 	configList := getConfigList()
+	if configList2, err := grpcGetTestLineList(); err == nil {
+		for _, c := range configList2.List {
+			var c1 Config
+			j, _ := json.Marshal(c)
+			json.Unmarshal(j, &c1)
+			c1.ID += 10000
+			configList = append(configList, &c1)
+		}
+	}
+
 	j, _ := json.Marshal(configList)
 	json.Unmarshal(j, &ret.List)
 	return ret, nil

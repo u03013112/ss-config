@@ -1,0 +1,35 @@
+syntax = "proto3";
+package tester;
+option go_package = "github.com/u03013112/ss-pb/tester";
+
+import "google/api/annotations.proto";
+
+service SSTester {
+    rpc GetSSLineList(GetSSLineListRequest) returns (GetSSLineListReply) {}
+    rpc GetSSLineConfig(GetSSLineConfigRequest) returns (GetSSLineConfigReply) {}
+}
+
+message GetSSLineListRequest {}
+
+message SSLine {
+    int64 id = 1;
+    string name = 2;
+    string address = 3;
+    string description = 4;
+    string status = 5;
+}
+
+message GetSSLineListReply {
+    repeated SSLine list = 1;
+}
+
+message GetSSLineConfigRequest {
+    int64 lineID = 1;
+}
+
+message GetSSLineConfigReply {
+    string IP = 1;
+    string port = 2;
+    string method = 3;
+    string passwd = 4;
+}
